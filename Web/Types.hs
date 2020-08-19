@@ -15,3 +15,13 @@ data ViewContext = ViewContext
     , controllerContext :: ControllerSupport.ControllerContext
     , layout :: Layout
     }
+
+data TodosController
+    = TodosAction
+    | NewTodoAction
+    | ShowTodoAction { todoId :: !(Id Todo) }
+    | CreateTodoAction
+    | EditTodoAction { todoId :: !(Id Todo) }
+    | UpdateTodoAction { todoId :: !(Id Todo) }
+    | DeleteTodoAction { todoId :: !(Id Todo) }
+    deriving (Eq, Show, Data)
