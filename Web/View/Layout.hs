@@ -19,10 +19,10 @@ defaultLayout inner = H.docTypeHtml ! A.lang "en" $ [hsx|
     {stylesheets}
     {scripts}
 
-    <title>App</title>
+    <title>IHP Todo</title>
 </head>
 <body>
-    <div class="container mt-4">
+    <div class="bg-gray-200 h-screen h-full">
         {renderFlashMessages}
         {inner}
     </div>
