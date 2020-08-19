@@ -1,1 +1,7 @@
 CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+CREATE TABLE todos (
+    id UUID DEFAULT uuid_generate_v4() PRIMARY KEY NOT NULL,
+    description TEXT NOT NULL,
+    done BOOLEAN DEFAULT false NOT NULL,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL
+);
