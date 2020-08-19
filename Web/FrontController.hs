@@ -9,8 +9,8 @@ import Web.Controller.Todos
 import IHP.Welcome.Controller
 
 instance FrontController WebApplication where
-    controllers = 
-        [ startPage WelcomeAction
+    controllers =
+        [ startPage TodosAction
         -- Generator Marker
         , parseRoute @TodosController
         ]
