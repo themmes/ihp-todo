@@ -31,8 +31,8 @@ defaultLayout inner = H.docTypeHtml ! A.lang "en" $ [hsx|
 
 stylesheets = do
     when (isDevelopment FrameworkConfig.environment) [hsx|
-        <link rel="stylesheet" href="/vendor/bootstrap.min.css"/>
         <link rel="stylesheet" href="/vendor/flatpickr.min.css"/>
+        <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
         <link rel="stylesheet" href="/app.css"/>
     |]
     when (isProduction FrameworkConfig.environment) [hsx|
@@ -42,13 +42,12 @@ stylesheets = do
 scripts = do
     when (isDevelopment FrameworkConfig.environment) [hsx|
         <script id="livereload-script" src="/livereload.js"></script>
-        <script src="/vendor/jquery-3.2.1.slim.min.js"></script>
         <script src="/vendor/timeago.js"></script>
         <script src="/vendor/popper.min.js"></script>
-        <script src="/vendor/bootstrap.min.js"></script>
         <script src="/vendor/flatpickr.js"></script>
         <script src="/helpers.js"></script>
         <script src="/vendor/morphdom-umd.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
     |]
     when (isProduction FrameworkConfig.environment) [hsx|
         <script src="/prod.js"></script>
