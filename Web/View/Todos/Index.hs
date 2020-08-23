@@ -8,15 +8,16 @@ instance View IndexView ViewContext where
       <div class="max-w-7xl mx-auto py-12 sm:px-6 lg:px-8">
       <div class="max-w-4xl mx-auto">
       <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-  <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
-    <h3 class="text-lg leading-6 font-medium text-gray-900">
-      Todos
-    </h3>
-    <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
-      Personal tasks for today
-    </p>
-  </div>
-  <div>
+      <div class="px-4 py-5 border-b border-gray-200 sm:px-6">
+        <a href={TodosAction}>
+        <h3 class="text-lg leading-6 font-medium text-gray-900">
+          Todos
+        </h3></a>
+        <p class="mt-1 max-w-2xl text-sm leading-5 text-gray-500">
+          Personal tasks for today
+        </p>
+      </div>
+      <div>
           {forEach todos renderTodo}
       <div class="bg-gray-50 px-4 py-5 sm:px-6">
          <a href={pathTo NewTodoAction}>
@@ -35,9 +36,14 @@ instance View IndexView ViewContext where
 
 renderTodo todo = [hsx|
       <div class="bg-gray-50 px-4 py-5 sm:px-6 flex justify-between hover:bg-gray-100">
-        <p class="mt-1 text-md leading-5 text-gray-900 sm:mt-0 sm:col-span-2">
+        <div>
+        <p class="mt-1 text-md leading-5 text-gray-900">
           {get #description todo}
         </p>
+        <p class="mt-1 text-sm leading-5 text-gray-500">
+          {timeAgo $ get #createdAt todo}
+        </p>
+        </div>
         <div class="space-x-3">
           <a href={EditTodoAction (get #id todo)}>
             <button class="p-3 hover:bg-gray-300 text-gray-500 hover:text-gray-600 rounded-full">
