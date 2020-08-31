@@ -36,14 +36,14 @@ instance Controller TodosController where
                 Right todo -> do
                     todo <- todo |> updateRecord
                     setSuccessMessage "Todo updated"
-                    redirectTo EditTodoAction { .. }
+                    redirectTo TodosAction
 
     action CreateTodoAction = do
         let todo = newRecord @Todo
         todo
             |> buildTodo
             |> ifValid \case
-                Left todo -> render NewView { .. } 
+                Left todo -> render NewView { .. }
                 Right todo -> do
                     todo <- todo |> createRecord
                     setSuccessMessage "Todo created"
